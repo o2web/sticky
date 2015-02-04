@@ -1,3 +1,3 @@
-# scrollEvents.js
+# sticky.js
 
-ScrollEvents allow you to trigger callbacks when elements reach certain points of page scroll.
+Sticky uses O2Web's scrollEvents to trigger regular or inverted sticky callbacks.

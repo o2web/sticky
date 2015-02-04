@@ -267,6 +267,7 @@ code {
     .message.sticky nav {
       position: relative;
       background: white;
+      border: 1px solid #125eff;
       color: #125eff;
       padding: 25px;
       width: 100%;

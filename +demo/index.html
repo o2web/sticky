@@ -34,121 +34,33 @@ $('.element').sticky(method [, flag], options);
 
 	  	</section>
 
-	  	<section class="demo-1 ">
+	  	<section class="demo-1">
 	  		<h2>1</h2>
-	  		<div class="message container translate left">
-	  			Visible : Retire la classe <em>left</em><br/>
-	  			Down : Ajoute la classe <em>left</em>
-	  		</div>
-
-		  	<div class="container">
-		  		<code class="eval">
-$('.demo-1 .message').scrollEvents({
-	visible: function(event){
-		event.selection.removeClass('left');
-	},
-	down: function(event){
-		event.selection.addClass('left');
-	}
-});
-				</code>
-	  		</div>
-		</section>
-
-
-		<section class="demo-2 dark">
-	  		<h2>2</h2>
-	  		<div class="message container color">
-	  			Activation avec un <em>offset</em>
-	  		</div>
-
-		  	<div class="container">
-		  		<code class="eval">
-$('.demo-2 .message').scrollEvents({
-	offset: 300,
-	topUp: function(event){
-		event.selection.addClass('turquoise');
-	},
-	topDown: function(event){
-		event.selection.removeClass('turquoise');
-	}
-});
-				</code>
-	  		</div>
-		</section>
-
-		<section class="demo-3">
-	  		<h2>3</h2>
-	  		<div class="message container">
-	  			Delta : <em>0</em>
+	  		<div class="message sticky container">
+	  			<nav>
+	  				Sticky
+	  			</nav>
 	  		</div>
 	  		<div class="overlay delta"></div>
 
 		  	<div class="container">
 		  		<code class="eval">
-$('.demo-3').scrollEvents({
-	travel: function(event){
-		var delta = event.data.delta();
-		$('.message em', event.data.selection).html(delta);
-		$('.demo-3 .overlay').width((delta*100)+'%');
+$('.demo-1 nav').sticky({
+	offset: 50,
+	offsetBottom: 50,
+	container: $('.demo-1 .sticky.container'),
+	fixed: function(e){
+		e.selection.removeClass('contained').addClass('sticked').html('Sticked');
+	},
+	contained: function(e){
+		e.selection.removeClass('sticked').addClass('contained').html('Contained');
+	},
+	reset: function(e){
+		e.selection.removeClass('sticked contained').html('Sticky');
 	}
 });
 				</code>
 	  		</div>
-		</section>
-
-		<section class="demo-5">
-	  		<h2>5</h2>
-	  		<div class="message container">
-	  			Animation avec le callback <em>travel</em>
-	  		</div>
-	  		<div class="dino"></div>
-
-		  	<div class="container">
-		  		<code class="eval">
-// Animation du background-position
-$('.demo-5').scrollEvents({
-	travel: function(e){
-		var dino = $('.demo-5 .dino')[0];
-		var delta = e.data.delta();
-		dino.style.left = ((delta*200)-50)+'%';
-		dino.style.backgroundPosition = '0px ' + ((delta*200)%10*-150) +'px';
-	}
-});
-
-
-// Methodes enable & disable
-$('.demo-5 button').on('click', function(){
-	var active = $(this).toggleClass('active').hasClass('active');
-	$('.demo-5').scrollEvents( active ? 'disable' : 'enable' );
-});
-
-				</code>
-	  		</div>
-
-  			<button>
-  				<span class="idle">Désactiver</span>
-					<span class="hover">Activer</span>
-  			</button>
-
-		</section>
-
-		<section class="schema">
-
-				<div class="message container">
-	  			Comment ça marche ?
-	  		</div>
-
-		  	<div class="message container">
-		  		<div class="blue">$(window).on('scroll')</div>
-	  			<img src="assets/img/schema-loop.jpg" />
-	  		</div>
-
-	  		<div class="message container">
-	  			<div class="blue">$(window).on('resize')</div>
-	  			<img src="assets/img/schema-resize.jpg" />
-	  		</div>
-
 		</section>
 
 		<section class="enjoy dark">

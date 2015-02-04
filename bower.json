@@ -1,0 +1,24 @@
+{
+  "name": "sticky",
+  "main": "sticky.min.js",
+  "version": "1.0.0",
+  "authors": [
+    "Charles Thibault <cthibault@o2web.ca>"
+  ],
+  "description": "Sticky uses O2's scrollEvents to trigger regular or inverted sticky callbacks",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "o2web"
+  ],
+  "license": "GPL v2",
+  "homepage": "o2web.ca",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

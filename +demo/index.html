@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>scrollEvents.js</title>
+    <link rel="stylesheet" href="assets/css/application.css">
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/o2-raf/raf.min.js"></script>
+    <script src="../bower_components/o2-scrollevents/scrollEvents.min.js"></script>
+    <script src="../sticky.js"></script>
+    <script src="assets/js/demo.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+
+    	<h1>
+    		<span class="blue">scrollEvents.js</span>
+				<div><small>now using requestAnimationFrame</small></div>
+    	</h1>
+	  	<section class="intro dark">
+
+	  		<div class="container">
+	  			<code>
+<span>// UTILISATION</span>
+
+$('.element').sticky(options);
+
+$('.element').sticky(method [, flag], options);
+					</code>
+
+	  		</div>
+
+	  	</section>
+
+	  	<section class="demo-1 ">
+	  		<h2>1</h2>
+	  		<div class="message container translate left">
+	  			Visible : Retire la classe <em>left</em><br/>
+	  			Down : Ajoute la classe <em>left</em>
+	  		</div>
+
+		  	<div class="container">
+		  		<code class="eval">
+$('.demo-1 .message').scrollEvents({
+	visible: function(event){
+		event.selection.removeClass('left');
+	},
+	down: function(event){
+		event.selection.addClass('left');
+	}
+});
+				</code>
+	  		</div>
+		</section>
+
+
+		<section class="demo-2 dark">
+	  		<h2>2</h2>
+	  		<div class="message container color">
+	  			Activation avec un <em>offset</em>
+	  		</div>
+
+		  	<div class="container">
+		  		<code class="eval">
+$('.demo-2 .message').scrollEvents({
+	offset: 300,
+	topUp: function(event){
+		event.selection.addClass('turquoise');
+	},
+	topDown: function(event){
+		event.selection.removeClass('turquoise');
+	}
+});
+				</code>
+	  		</div>
+		</section>
+
+		<section class="demo-3">
+	  		<h2>3</h2>
+	  		<div class="message container">
+	  			Delta : <em>0</em>
+	  		</div>
+	  		<div class="overlay delta"></div>
+
+		  	<div class="container">
+		  		<code class="eval">
+$('.demo-3').scrollEvents({
+	travel: function(event){
+		var delta = event.data.delta();
+		$('.message em', event.data.selection).html(delta);
+		$('.demo-3 .overlay').width((delta*100)+'%');
+	}
+});
+				</code>
+	  		</div>
+		</section>
+
+		<section class="demo-5">
+	  		<h2>5</h2>
+	  		<div class="message container">
+	  			Animation avec le callback <em>travel</em>
+	  		</div>
+	  		<div class="dino"></div>
+
+		  	<div class="container">
+		  		<code class="eval">
+// Animation du background-position
+$('.demo-5').scrollEvents({
+	travel: function(e){
+		var dino = $('.demo-5 .dino')[0];
+		var delta = e.data.delta();
+		dino.style.left = ((delta*200)-50)+'%';
+		dino.style.backgroundPosition = '0px ' + ((delta*200)%10*-150) +'px';
+	}
+});
+
+
+// Methodes enable & disable
+$('.demo-5 button').on('click', function(){
+	var active = $(this).toggleClass('active').hasClass('active');
+	$('.demo-5').scrollEvents( active ? 'disable' : 'enable' );
+});
+
+				</code>
+	  		</div>
+
+  			<button>
+  				<span class="idle">Désactiver</span>
+					<span class="hover">Activer</span>
+  			</button>
+
+		</section>
+
+		<section class="schema">
+
+				<div class="message container">
+	  			Comment ça marche ?
+	  		</div>
+
+		  	<div class="message container">
+		  		<div class="blue">$(window).on('scroll')</div>
+	  			<img src="assets/img/schema-loop.jpg" />
+	  		</div>
+
+	  		<div class="message container">
+	  			<div class="blue">$(window).on('resize')</div>
+	  			<img src="assets/img/schema-resize.jpg" />
+	  		</div>
+
+		</section>
+
+		<section class="enjoy dark">
+	  		<div class="message container">
+	  			Enjoy
+	  		</div>
+		</section>
+
+	 </div>
+  </body>
+</html>

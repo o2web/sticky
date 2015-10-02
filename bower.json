@@ -1,6 +1,6 @@
 {
   "name": "sticky",
-  "main": "sticky.min.js",
+  "main": "sticky.js",
   "version": "1.1.0",
   "authors": [
     "Charles Thibault <cthibault@o2web.ca>"

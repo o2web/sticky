@@ -130,7 +130,7 @@
 					for(var r=0; r<refs.length; r++)
 						window.raf.off(refs[r], 'afterdocumentresize', updateContainedOffset);
 				}
-				return $(this).scrollEvents(args, options)
+				return $selection.scrollEvents(args, options)
 			}
 
 

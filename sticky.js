@@ -135,7 +135,7 @@
 
 
 			var options = $.extend(true,{
-					container: false,
+					container: $selection.parent(),
 					inverted: false,
 					offset: 0,
 					offsetBottom: 0,
@@ -237,7 +237,9 @@
 	});
 
 	$win.on('load', function(){
-		updateContainedOffset($(window.sticky.selection));
+		window.raf.on('nextframe', function(e){
+			updateContainedOffset($(window.sticky.selection));
+		});
 	});
 
 })(jQuery);

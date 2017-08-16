@@ -25,7 +25,7 @@
     "url": "https://github.com/o2web/sticky.git"
   },
   "dependencies": {
-    "jquery": "~1.11",
+    "jquery": ">=1.11",
     "o2-raf": "~1",
     "o2-scrollevents": "~1"
   }
